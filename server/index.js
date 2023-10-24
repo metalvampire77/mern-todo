@@ -2,9 +2,9 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const dotenv = require('dotenv')
 const TodoModel = require('./models/todo')
 const path = require('path')
+const dotenv = require('dotenv')
 
 const app = express()
 app.use(express.json())
@@ -22,16 +22,22 @@ const db = mongoose.connection
 
 db.once('open',() => console.log('db connected'))
 
-// // Serve the React application
-// app.use(express.static(path.join(__dirname, '../client/dist')));
+// Serve the React application
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 
-// // For any other route, serve the React app
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
-// });
+// For any other route, serve the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+});
 
-require('dotenv').config();
+dotenv.config()
+
+const PORT = process.env.PORT || 5123
+
+app.listen(PORT,() => {
+    console.log(`server running on port ${PORT} `)
+})
 
 app.get('/get',(req,res) => {
     TodoModel.find()
@@ -68,8 +74,3 @@ app.post('/',(req,res) => {
 
 
 
-const PORT = process.env.PORT
-
-app.listen(PORT,() => {
-    console.log(`server running on port ${PORT} `)
-})
