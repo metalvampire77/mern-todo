@@ -10,7 +10,11 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect('mongodb+srv://metalvampire77:XgYrjeaZW16Y5Tmu@cluster0.te0xwmq.mongodb.net/?retryWrites=true&w=majority',{
+dotenv.config()
+
+const URI = process.env.MONGO_URI
+
+mongoose.connect(URI,{
     useUnifiedTopology: true
 })
 .then(() => {
@@ -31,9 +35,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
 
-dotenv.config()
-
-const PORT = process.env.PORT || 5123
+const PORT = process.env.PORT
 
 app.listen(PORT,() => {
     console.log(`server running on port ${PORT} `)

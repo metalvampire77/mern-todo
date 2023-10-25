@@ -7,7 +7,7 @@ function CreateTodo() {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      axios.post('http://127.0.0.1:5123/', { todo })
+      axios.post('/', { todo })
         .then(result => {
           console.log(result);
           textBoxRef.current.value = '';

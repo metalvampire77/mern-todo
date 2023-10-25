@@ -9,7 +9,7 @@ export function App() {
 
   const fetchData = () => {
     axios
-      .get("http://127.0.0.1:5123/get")
+      .get("/get")
       .then((result) => {
         setTodos(result.data);
       })
@@ -20,14 +20,14 @@ export function App() {
 
   const completeTodo = (id, done) => {
     axios
-      .put("http://127.0.0.1:5123/update/" + id, { done })
+      .put("/update/" + id, { done })
       .then((result) => console.log("success"))
       .catch((err) => console.log(err));
   };
 
   const deleteTodo = (id) => {
     axios
-      .delete("http://127.0.0.1:5123/delete/" + id)
+      .delete("/delete/" + id)
       .then((result) => console.log("success"))
       .catch((err) => console.log(err));
   };
