@@ -26,6 +26,14 @@ const db = mongoose.connection
 
 db.once('open',() => console.log('db connected'))
 
+app.get('/get',(req,res) => {
+    TodoModel.find()
+    .then((result) => {
+        res.json(result)
+    })
+    .catch(err => res.json(err))
+})
+
 // Serve the React application
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
@@ -39,14 +47,6 @@ const PORT = process.env.PORT
 
 app.listen(PORT,() => {
     console.log(`server running on port ${PORT} `)
-})
-
-app.get('/get',(req,res) => {
-    TodoModel.find()
-    .then((result) => {
-        res.json(result)
-    })
-    .catch(err => res.json(err))
 })
 
 app.put('/update/:id',(req,res) => {
