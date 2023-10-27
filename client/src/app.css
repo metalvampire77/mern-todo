@@ -13,6 +13,7 @@ body{
   background: linear-gradient(125deg, #1d3557, #457b9d);
   /* background: black; */
   height: 100vh;
+  overflow-y: auto;
 }
 
 .container{
@@ -23,6 +24,7 @@ body{
   border-radius: 20px;
   height: 70%; 
   background: #d2e9e9;
+  overflow-y: auto;
 }
 
 .todo{
