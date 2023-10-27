@@ -1,29 +1,163 @@
-.todo {
-    border: 1px solid red;
-    padding: 8px;
-    margin: 4px;
-    box-sizing: border-box;
-    width: 10%;
-    border-radius: 15px;
-    cursor: pointer;
+body{
+  margin: 0;
+  padding: 0;
 }
-  
-.main{
+
+.main {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: linear-gradient(125deg, #28112b, #453643); */
+  background: linear-gradient(125deg, #1d3557, #457b9d);
+  /* background: black; */
+  height: 100vh;
+}
+
+.container{
+  border: 1px solid black;
+  width: 40%;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  height: 70%; 
+  background: #d2e9e9;
+}
+
+.todo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #edeef0;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.textBox{
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 10px;
+  background: transparent;
+  font-weight: 14px;
+}
+
+::placeholder{
+  font-weight: bold;
+}
+
+.addBtn{
+  padding: 10px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  background: #788475;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.items{
+  /* margin-top: 20px; */
+  border-radius: 20px;
+  border: none;
+  padding: 5px;
+  height: 5%;
+  width: 90%;
+  justify-content: space-between;
   display: flex;
   align-items: center;
 }
 
 .lineThrough{
   text-decoration: line-through;
+  width: 90%;
 }
 
 .none{
   text-decoration: none;
+  width: 90%;
 }
 
-.deleteImg{
-  margin-left: 5px;
-  height: 22px;
-  width: 20px;
+.delete-img{
   cursor: pointer;
+  height: 17px;
+  width: 17px;
+}
+
+.todo-text{
+  margin-left: 10px;
+}
+
+/* input[type="checkbox"] {
+  margin-top: 5px; 
+} */
+
+input[type="checkbox"]:checked + label {
+  text-decoration: line-through; 
+}
+
+.check-item{
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.delete{
+  cursor: pointer;
+  background: red;
+  border-radius: 100%;
+  padding: 2px 6px;
+}
+
+/* .items::before{
+  content: '';
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background-image: url(images/unchecked.png);
+  background-size: cover;
+  background-position: center;
+  top: 12px;
+  left: 8px;
+} */
+
+@media (max-width: 1000px){
+  .container{
+    width: 70%;
+    height: 60%;
+  }
+
+  .textBox{
+    width: 60%;
+  }
+
+  .todo{
+    width: 95%;
+  }
+
+  .items{
+    width: 90%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+  .lineThrough{
+    text-decoration: line-through;
+    width: 90%;
+  }
+  
+  .none{
+    text-decoration: none;
+    width: 90%;
+  }
+
+  .delete{
+    margin-left: 5%;
+    cursor: pointer;
+  }
+    
 }

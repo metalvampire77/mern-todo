@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "preact/hooks";
 import axios from "axios";
 import CreateTodo from "./components/createTodo";
 import "./app.css";
-import bin from "./assets/bin.png";
+import bin from "./assets/delete.png";
 
 export function App() {
   const [todos, setTodos] = useState([]);
@@ -33,27 +33,36 @@ export function App() {
   };
 
   return (
-    <>
-      <CreateTodo />
-      {todos.length === 0 ? (
-        <div>
-          <h2>no record</h2>
-        </div>
-      ) : (
-        todos.map((todo) => (
-          <div className="main"><div
-          key={todo.id}
-          className="todo"
-          onClick={() => completeTodo(todo._id, todo.done)}
-        >
-          <p className={todo.done ? "lineThrough" : "none"}>{todo.todo} </p>
-        </div>
-        <img src={bin} className="deleteImg" alt="" onClick={() => deleteTodo(todo._id)}/>
-        </div>
-          
-        ))
-      )}
-    </>
+    <div className="main">
+      <div className="container">
+        <h1>To-do list</h1>
+        <CreateTodo />
+        {todos.length === 0 ? (
+          <div>
+            <h2>no record</h2>
+          </div>
+        ) : (
+          todos.map((todo) => (
+            <div
+              className="items"
+              key={todo.id}
+              onClick={() => completeTodo(todo._id, todo.done)}
+            >
+              <p className={todo.done ? "lineThrough" : "none"}>
+                {/* <input type="checkbox"></input> */}
+                <label className="todo-text">{todo.todo}</label>
+              </p>
+              <img
+                src={bin}
+                alt=""
+                className="delete-img"
+                onClick={() => deleteTodo(todo._id)}
+              />
+            </div>
+          ))
+        )}
+      </div>
+    </div>
   );
 }
 
